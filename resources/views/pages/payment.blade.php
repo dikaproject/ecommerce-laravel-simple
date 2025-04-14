@@ -194,7 +194,13 @@
             <div class="countdown-timer">
                 <div class="timer-label">Selesaikan pembayaran sebelum</div>
                 <div class="timer" id="countdown">23:59:59</div>
-                <div class="timer-label">{{ $order->payment_due_date->format('d M Y, H:i') }}</div>
+                <div class="timer-label">
+                    @if(is_string($order->payment_due_date))
+                        {{ \Carbon\Carbon::parse($order->payment_due_date)->format('d M Y, H:i') }}
+                    @else
+                        {{ $order->payment_due_date->format('d M Y, H:i') }}
+                    @endif
+                </div>
             </div>
         </div>
         
