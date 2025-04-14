@@ -205,7 +205,7 @@
             </div>
             
             <div class="text-center mb-4">
-                <img src="{{ asset('images/midtrans-logo.png') }}" alt="Midtrans" height="40">
+                <img src="{{ asset('images/Midtrans.webp') }}" alt="Midtrans" height="40">
                 <p class="mt-2">Pembayaran aman dan terpercaya dengan berbagai metode pembayaran</p>
             </div>
             

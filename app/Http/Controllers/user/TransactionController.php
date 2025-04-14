@@ -158,17 +158,20 @@ class TransactionController extends Controller
             
             DB::commit();
             
-            // If payment is COD, redirect to success page
-            if ($request->payment_method === 'cod') {
-                $transaction->payment_status = 'paid';
-                $transaction->status = 'processing';
-                $transaction->save();
-                
-                // Get recommended products for the success page
-                $recommendedProducts = Product::inRandomOrder()->take(4)->get();
-                
-                return view('pages.order-success', compact('transaction', 'recommendedProducts'));
-            }
+           // If payment is COD, redirect to success page
+if ($request->payment_method === 'cod') {
+    $transaction->payment_status = 'paid';
+    $transaction->status = 'processing';
+    $transaction->save();
+    
+    // Get recommended products for the success page
+    $recommendedProducts = Product::inRandomOrder()->take(4)->get();
+    
+    // Change variable name from transaction to order
+    $order = $transaction;
+    
+    return view('pages.order-success', compact('order', 'recommendedProducts'));
+}
             
             // Otherwise redirect to payment page
             return redirect()->route('payment.show', $transaction->id);

@@ -240,7 +240,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex align-items-center">
                                                 @if($payment->logo)
-                                                    <img src="{{ asset($payment->logo) }}" alt="{{ $payment->name }}" class="me-2">
+                                                    <img src="{{ asset('images/Midtrans.webp') }}" alt="{{ $payment->name }}" class="me-2">
                                                 @endif
                                                 <div>
                                                     <strong>{{ $payment->name }}</strong>
@@ -258,7 +258,7 @@
                 </div>
                 
                 <!-- Order Notes -->
-                <div class="checkout-section">
+                {{-- <div class="checkout-section">
                     <div class="section-title">
                         <i class="fas fa-sticky-note"></i> Catatan Pesanan (Opsional)
                     </div>
@@ -267,7 +267,7 @@
                         <textarea class="form-control" id="order_notes" name="order_notes" rows="3" 
                                   placeholder="Tambahkan catatan untuk pesanan Anda..."></textarea>
                     </div>
-                </div>
+                </div> --}}
             </form>
         </div>
         

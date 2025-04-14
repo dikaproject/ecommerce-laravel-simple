@@ -86,9 +86,11 @@
                         <div class="d-flex justify-content-center mt-4">
                             {{ $transactions->links() }}
                         </div>
-                    @else
+                        @else
                         <div class="text-center py-5">
-                            <img src="{{ asset('images/empty-order.svg') }}" alt="Tidak ada pesanan" class="img-fluid mb-3" style="max-height: 200px;">
+                            <div class="empty-state-icon mb-4">
+                                <i class="fas fa-shopping-bag fa-5x text-muted"></i>
+                            </div>
                             <h5>Belum Ada Pesanan</h5>
                             <p class="text-muted">Anda belum melakukan pemesanan apapun</p>
                             <a href="{{ route('products.index') }}" class="btn btn-danger">Mulai Belanja</a>
@@ -169,4 +171,32 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .empty-state-icon {
+        height: 120px;
+        width: 120px;
+        line-height: 120px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+        }
+    }
+</style>
 @endsection
