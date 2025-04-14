@@ -337,7 +337,7 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
-                    <img src="{{ asset('images/logo-small.png') }}" alt="Logo">
+                    <img src="{{ asset('images/logo-izzicraft.png') }}" alt="Logo">
                     <span class="menu-text">Izzi Craft</span>
                 </a>
                 <button type="button" class="toggle-sidebar" id="toggleSidebar">
@@ -381,8 +381,8 @@
                 <div class="d-flex align-items-center">
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('images/admin-avatar.jpg') }}" alt="Admin">
-                            <span class="ms-2 d-none d-md-inline">Admin</span>
+                            <img src="{{ Auth::user()->avatar ? asset('storage/avatars/' . Auth::user()->avatar) : asset('images/admin-avatar.jpg') }}" alt="{{ Auth::user()->name }}" width="32" height="32" style="border-radius: 50%; object-fit: cover;">
+                            <span class="ms-2 d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profil</a></li>

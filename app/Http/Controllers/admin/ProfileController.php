@@ -52,9 +52,9 @@ class ProfileController extends Controller
                 Storage::delete('public/avatars/' . $user->avatar);
             }
             
-            // Store new avatar
+            // Store new avatar - FIXED PATH
             $avatarName = time() . '.' . $request->avatar->extension();
-            $request->avatar->storeAs('public/avatars', $avatarName);
+            $request->avatar->storeAs('avatars', $avatarName, 'public');
             $user->avatar = $avatarName;
         }
         

@@ -7,7 +7,9 @@
 <style>
     .hero-section {
         background-color: #f8f9fa;
-        padding: 60px 0;
+        padding: 60px 0 60px; /* Mengurangi bottom padding */
+        margin-bottom: 20px; /* Menambahkan margin bottom untuk jarak dengan section berikutnya */
+        overflow: hidden; /* Menghindari konten menembus section */
     }
     
     .section-title {
@@ -64,6 +66,131 @@
     .promo-banner:hover img {
         transform: scale(1.05);
     }
+
+    /* Image stacking effect styles - improved */
+    .stacked-images-container {
+        position: relative;
+        width: 100%;
+        height: 380px; /* Increased height to accommodate larger square images */
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .stacked-image {
+        position: absolute;
+        width: 85%; /* Slightly increased from 80% */
+        height: 85%; /* Equal to width for 1:1 aspect ratio */
+        object-fit: cover;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .stacked-image-1 {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .stacked-image-2 {
+        top: 30px; /* Adjusted for larger images */
+        left: 30px; /* Adjusted for larger images */
+        z-index: 2;
+    }
+    
+    @media (max-width: 992px) {
+        .stacked-images-container {
+            height: 320px; /* Adjusted for medium screens */
+            margin-bottom: 0;
+        }
+        
+        .stacked-image {
+            width: 80%; /* Slightly reduced for medium screens */
+            height: 80%; /* Equal to width for 1:1 aspect ratio */
+        }
+        
+        .stacked-image-2 {
+            top: 25px;
+            left: 25px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .stacked-images-container {
+            height: 280px; /* Adjusted for smaller screens */
+        }
+        
+        .stacked-image {
+            width: 90%;
+            height: 90%; /* Equal to width for 1:1 aspect ratio */
+        }
+        
+        .stacked-image-2 {
+            top: 20px;
+            left: 20px;
+        }
+    }
+
+    /* New modern craft inspiration styles */
+    .craft-inspiration-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        background-color: white;
+    }
+    
+    .craft-inspiration-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .craft-inspiration-img-container {
+        position: relative;
+        width: 100%;
+        padding-top: 75%; /* 4:3 Aspect Ratio */
+        overflow: hidden;
+    }
+    
+    .craft-inspiration-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .craft-inspiration-card:hover .craft-inspiration-img {
+        transform: scale(1.05);
+    }
+    
+    .craft-inspiration-content {
+        padding: 20px;
+    }
+    
+    .craft-inspiration-content h5 {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .craft-inspiration-content p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .craft-inspiration-card {
+            margin-bottom: 20px;
+        }
+    }
 </style>
 @endsection
 
@@ -83,16 +210,9 @@
                 </a>
             </div>
             <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <img src="{{ asset('images/craft-supplies-1.jpg') }}" alt="Craft Supplies" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <img src="{{ asset('images/craft-supplies-2.jpg') }}" alt="Craft Supplies" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-12">
-                        <img src="{{ asset('images/craft-supplies-3.jpg') }}" alt="Craft Supplies" class="img-fluid rounded">
-                    </div>
+                <div class="stacked-images-container">
+                    <img src="{{ asset('images/craft-supplier.png') }}" alt="Craft Supplies" class="stacked-image stacked-image-1">
+                    <img src="{{ asset('images/craft-supplier.png') }}" alt="Craft Supplies" class="stacked-image stacked-image-2">
                 </div>
             </div>
         </div>
@@ -162,43 +282,43 @@
     </div>
 </section>
 
-<!-- Promo Banners -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="promo-banner">
-                    <img src="{{ asset('images/promo-banner-1.jpg') }}" alt="Special Offer" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="promo-banner">
-                    <img src="{{ asset('images/promo-banner-2.jpg') }}" alt="Special Offer" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Craft Collections -->
 <section class="py-5">
     <div class="container">
         <h2 class="section-title">Inspirasi Craft</h2>
-        <div class="row craft-collections">
+        <div class="row">
             <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/inspiration-1.jpg') }}" alt="Craft Inspiration" class="img-fluid">
-                <h5>Buket Bunga Handmade</h5>
-                <p>Buat buket bunga custom dengan material pilihan untuk berbagai acara spesial.</p>
+                <div class="craft-inspiration-card">
+                    <div class="craft-inspiration-img-container">
+                        <img src="{{ asset('images/inspiration-1.jpg') }}" alt="Craft Inspiration" class="craft-inspiration-img">
+                    </div>
+                    <div class="craft-inspiration-content">
+                        <h5>Buket Bunga Handmade</h5>
+                        <p>Buat buket bunga custom dengan material pilihan untuk berbagai acara spesial.</p>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/inspiration-2.jpg') }}" alt="Craft Inspiration" class="img-fluid">
-                <h5>DIY Gift Box</h5>
-                <p>Kreasi kotak hadiah unik dan personal untuk orang tersayang.</p>
+                <div class="craft-inspiration-card">
+                    <div class="craft-inspiration-img-container">
+                        <img src="{{ asset('images/inspiration-2.jpg') }}" alt="Craft Inspiration" class="craft-inspiration-img">
+                    </div>
+                    <div class="craft-inspiration-content">
+                        <h5>DIY Gift Box</h5>
+                        <p>Kreasi kotak hadiah unik dan personal untuk orang tersayang.</p>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/inspiration-3.jpg') }}" alt="Craft Inspiration" class="img-fluid">
-                <h5>Scrapbook Memories</h5>
-                <p>Abadikan momen berharga dengan scrapbook kreatif dan penuh makna.</p>
+                <div class="craft-inspiration-card">
+                    <div class="craft-inspiration-img-container">
+                        <img src="{{ asset('images/inspiration-3.webp') }}" alt="Craft Inspiration" class="craft-inspiration-img">
+                    </div>
+                    <div class="craft-inspiration-content">
+                        <h5>Scrapbook Memories</h5>
+                        <p>Abadikan momen berharga dengan scrapbook kreatif dan penuh makna.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

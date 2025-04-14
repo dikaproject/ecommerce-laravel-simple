@@ -51,7 +51,7 @@
     <div class="auth-container">
         <div class="auth-logo">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/logo.png') }}" alt="Izzi Craft Logo">
+                <img src="{{ asset('images/logo-izzicraft.png') }}" alt="Izzi Craft Logo">
             </a>
         </div>
         
@@ -108,11 +108,7 @@
                 <div class="d-grid mb-3">
                     <button type="submit" class="btn btn-danger btn-lg">Masuk</button>
                 </div>
-                
-                <!-- Forgot Password -->
-                <div class="text-center mb-3">
-                    <a href="{{ route('password.request') }}" class="text-decoration-none">Lupa password?</a>
-                </div>
+            
             </form>
         </div>
         

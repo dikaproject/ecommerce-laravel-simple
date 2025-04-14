@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="text-center">
-                    <img src="{{ asset('images/category-banner.jpg') }}" alt="Kategori Produk" class="img-fluid rounded">
+                    <img src="{{ asset('images/craft-supplier.png') }}" alt="Kategori Produk" class="img-fluid rounded">
                 </div>
             </div>
         </div>
